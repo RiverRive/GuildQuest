@@ -5,6 +5,10 @@
 	outline: solid;
 }
 
+.test {
+	text-align: center;
+}	
+
 body {
-	background-color:Azure;
+	background-color:azure;
 }
