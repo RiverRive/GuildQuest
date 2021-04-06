@@ -9,7 +9,7 @@
 
 <?php
 /* Connect to MySQL */
-
+require "guildQuestConfig.php"
 
 $mysqli = new mysqli($host, $user, $password, $dbname, $port);
 
