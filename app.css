@@ -3,12 +3,20 @@
 	color: #0b361b;
 	background-color: CadetBlue;
 	outline: solid;
+	max-width: 700px;
+	margin: auto;
 }
 
-.test {
+.login {
 	text-align: center;
+	margin: auto;
+	max-width: 300px;
+	border: 3px solid green;
+	background-color:Azure;
 }	
 
 body {
-	background-color:azure;
+	background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/11/Backgrounds-Free-Fantasy-Art-HD.jpg');
+
+	background-size: auto;
 }
