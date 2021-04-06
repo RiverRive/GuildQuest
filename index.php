@@ -11,11 +11,11 @@
 		<h1>Welcome to GuildQuest!</h1>
 	</div>
         <div class="login">
-        <form method="post" action="processLogin.php">
+	<form method="POST" action="login.php">
                 <label for="username">Username:</label><br>
                 <input type="text" id="username" name="username"><br>
                 <label for="password">Password:</label><br>
-                <input type="text" id="password" name="password"><br>
+                <input type="password" id="password" name="password"><br>
                 <input type="submit" id = "loginButton" value = "Login">
                 </form>
         </div>
