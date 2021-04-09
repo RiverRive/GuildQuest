@@ -4,18 +4,17 @@ USE GuildQuest;
 
 CREATE TABLE ACCOUNT
 (   
-	UserID					CHAR(15) NOT NULL,
+	Email					CHAR(64) NOT NULL UNIQUE,
 	Username				CHAR(15) NOT NULL UNIQUE,
 	Password				CHAR(20) NOT NULL,
-	Email					CHAR(64) NOT NULL UNIQUE,
 	Role					CHAR(5) CHECK(Role IN('Admin', 'Mod', 'User')),
 	DateSignedUp			DATE NOT NULL,
 	LeaderboardRanking		INTEGER,
 	Balance					DECIMAL(7,2), 
 	MoneySpent				DECIMAL(7,2),
 	IsBanned				BOOL NOT NULL,
-    INDEX user_id (UserID),
-    PRIMARY KEY (UserID)
+    INDEX account_email (Email),
+    PRIMARY KEY (Email)
 );
 
 CREATE TABLE WORLD
@@ -51,7 +50,7 @@ CREATE TABLE GUILD
 (
 	GuildID 				CHAR(15) NOT NULL,
 	GuildName				CHAR(30) NOT NULL,
-	GuildMemberCount		INTEGER NOT NULL,
+	MaxNumMembers			INTEGER,
     GuildExperience			INTEGER NOT NULL,
 	GuildLevel				INTEGER NOT NULL,
     INDEX guild_id (GuildID),
