@@ -1,7 +1,8 @@
 <?php
 
    	require "guildQuestConfig.php";
-        $mysqli = new mysqli($host, $user, $password, $dbname, $port);
+	
+	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
 
         if ($mysqli->conect_errno)
         {
@@ -9,13 +10,25 @@
 		exit();
 	}
 
-	$result = $mysqli->query("SELECT * FROM ACCOUNT");
 
-	echo "result:\n";
-	foreach ($result as $row)
+	$suppliedUsername = $_POST['username'];
+	$suppliedPassword = $_POST['password'];
+
+	$result = $mysqli->query("SELECT * FROM ACCOUNT WHERE Username = '$suppliedUsername' AND Password = '$suppliedPassword';");
+
+	$length = $result->num_rows;
+
+
+	if ($length == 0)
 	{
-		echo " id = " . $row['UserID'] . "\n";
+		printf("Invalid username or password");
+		exit();
 	}
+	else
+	{
+		printf("Success! Welcome: %s", $suppliedUsername);
+	}
+	
 
 	
 
