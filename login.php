@@ -26,7 +26,20 @@
 	}
 	else
 	{
-		printf("Success! Welcome: %s", $suppliedUsername);
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+		// go to admin page if admin
+		if ($row['Role'] == 'Admin')
+		{
+			header("Location: adminHome.php");
+			exit();
+		}
+		else
+		{
+			// go to player homepage
+			header("Location: playerHome.php");
+			exit();
+		}
 	}
 	
 
