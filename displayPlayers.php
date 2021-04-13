@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Players</title>
+<link rel="stylesheet" href="tables.css">
 </head>
 <body>
 <center>
@@ -21,7 +22,7 @@
 	$result = $mysqli->query("SELECT * FROM PLAYER;");
 ?>
 
-<table Border = "1">
+<table class="displayTable">
 <tr>
 
 <?php

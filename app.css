@@ -5,26 +5,66 @@
 	outline: solid;
 	max-width: 700px;
 	margin: auto;
+	font-family: Monco, Helvetica, sans-serif;
 }
 
 .login {
 	text-align: center;
 	margin: auto;
+	padding: 10px;
 	max-width: 300px;
 	border: 3px solid green;
 	background-color:Azure;
+	font-family:Monaco, Helvetica, sans-serif;
 }
 
 .signup {
 	text-align:center;
 	margin: auto;
+	padding: 10px;
 	max-width:300px;
 	border:3px solid green;
 	background-color: Azure;
+	font-family:Monaco, Helvetica, sans-serif;
 }
 
-body {
+.homeBody {
 	background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/11/Backgrounds-Free-Fantasy-Art-HD.jpg');
 
 	background-size: auto;
 }
+
+
+
+.adminHome {
+	font-family:Monaco, Helvetica, sans-serif;
+	text-align:center;
+	background-color:Azure;
+}
+
+.adminTable {
+	border-collapse:collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 200px;
+}
+
+.adminTable th {
+	background-color: #009879;
+	color: white;
+	text-align: left;
+	font-weight: bold;
+	padding: 10px 15px;
+}
+
+.adminTable tr {
+	border-bottom: 1px solid lightgrey;
+	color: black;
+}
+
+.adminTable tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+
+
