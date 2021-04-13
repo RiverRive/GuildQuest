@@ -48,8 +48,7 @@
 			for($i = 0; $i < $result->field_count; $i++)
 			{
 				echo "<td> $row[$i] </td>";
-			}	
-			echo "</tr>";
+			}
 		}
 	}
 
