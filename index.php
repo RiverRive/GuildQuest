@@ -6,7 +6,7 @@
 	<title>GuildQuest Home</title>
 	<link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body class = "homeBody">
 	<div class="header">
 		<h1>Welcome to GuildQuest!</h1>
 	</div>

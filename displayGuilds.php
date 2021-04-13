@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>All Guilds</title>
+<link rel="stylesheet" href="tables.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
         $result = $mysqli->query("SELECT * FROM GUILD;");
 ?>
 
-<table Border = "1">
+<table class="displayTable">
 
 <tr>
 

@@ -1,12 +1,13 @@
 <html>
 <head>
 <title>Administration</title>
+<link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body class="adminHome">
 <center>
 	<h1>Welcome Admin!</h1>
 
-	<table border=1>
+	<table class="adminTable">
 	<th>Display Tables</th>
 	<tr>
 		<td><a href = displayAccounts.php>Display User Accounts</a></td>
