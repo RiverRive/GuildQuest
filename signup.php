@@ -13,7 +13,7 @@
 
 	$email = $_POST['signUpEmail'];
 	$username = $_POST['signUpUser'];
-	$pass = $_POST['signUppass'];
+	$pass = $_POST['signUpPass'];
 	$currentDate = date("Y-m-d");
 	
 	$sql = "INSERT INTO ACCOUNT (Email, Username, Password, Role, DateSignedUp, IsBanned) VALUES('$email', '$username', '$pass', 'User', '$currentDate', FALSE);";
