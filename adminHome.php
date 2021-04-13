@@ -30,6 +30,13 @@
 
 	</table>
 
+
+	<br>
+	<br>
+	<br>
+	<a href = index.php>Logout</a>
+
+
 </body>
 
 
