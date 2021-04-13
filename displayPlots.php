@@ -2,8 +2,9 @@
 <head>
 <title>Display Plots</title>
 <link rel="stylesheet" href="tables.css">
+<link rel="stylesheet" href="adminPages.css">
 </head>
-<body>
+<body class="displayPage">
 <center>
 <h2>Display All Plots</h2>
 
