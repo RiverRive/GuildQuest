@@ -2,6 +2,7 @@
 <head>
 <title>Administration</title>
 <link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="tables.css">
 </head>
 <body class="adminHome">
 <center>
