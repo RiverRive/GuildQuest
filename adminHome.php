@@ -6,7 +6,8 @@
 <center>
 	<h1>Welcome Admin!</h1>
 
-	<table>
+	<table border=1>
+	<th>Display Tables</th>
 	<tr>
 		<td><a href = displayAccounts.php>Display User Accounts</a></td>
 	</tr>
@@ -25,10 +26,27 @@
 	<tr>
 		<td><a href = displayPlots.php>Display Plots</td>
 	</tr>
-
-
-
 	</table>
+
+	<br>
+	<br>
+	<div>
+	<h2>Remove An Account</h2>
+
+	<form method="POST" action="removeAccount.php">
+		<label for="rmuser">Username:</label>
+		<input type="text" id="rmuser" name="rmuser"><br>
+		<input type="submit" id="removeAccount" value="Remove Account">
+	</form>
+
+	<h2>Ban An Account</h2>
+	<form method="POST" action="banAccount.php">
+                <label for="banuser">Username:</label>
+                <input type="text" id=banuser" name="banuser"><br>
+                <input type="submit" id="banAccount" value="Ban Account">
+        </form>
+
+	</div>
 
 
 	<br>
