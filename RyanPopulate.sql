@@ -125,14 +125,32 @@ VALUES('RDQ010', 'Hunt big game', 'Hunt a deer in the woods', 10, 200, 10, 2, 2,
 
 
 -- populate plots x10 --
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD001', 'RDW001', 'RDP001', 100, 30, 10, 10, 10, 100, 100, 100, 100, 'Resident');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD002', 'RDW001', 'RDP002', 90, 20, 5, 5, 5, 10, 10, 10, 10, 'Resident');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD003', 'RDW002', 'RDP003', 100, 30, 10, 10, 10, 100, 100, 100, 100, 'Resident');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD004', 'RDW002', 'RDP004', 50, 10, 10, 10, 10, 10, 10, 10, 10, 'Ally');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD005', 'RDW003', 'RDP002', 50, 10, 10, 10, 10, 10, 10, 10, 10, 'Outsider');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD006', 'RDW004', 'RDP006', 40, 8, 8, 8, 8, 30, 30, 30, 30, 'Outsider');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD007', 'RDW004', 'RDP007', 140, 18, 28, 34, 80, 30, 30, 30, 30, 'Resident');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD008', 'RDW004', 'RDP008', 20, 10, 10, 10, 10, 0, 0, 0, 0, 'Resident');
 
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD009', 'RDW005', 'RDP009', 20, 10, 10, 10, 10, 0, 0, 0, 0, 'Resident');
 
-
-
+INSERT INTO PLOT(PlotId, World, Owner, DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType)
+VALUES ('RD010', 'RDW005', 'RDP010', 40, 10, 10, 10, 10, 100, 100, 100, 100, 'Resident');
