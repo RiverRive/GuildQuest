@@ -23,8 +23,8 @@
 	}
 
 
-	$worldID = $_POST['world'];
-    $accountUsername = $_POST['username'];
+	$worldID = $_GET['world'];
+    $accountUsername = $_GET['username'];
 
 	// run query to select player stats
 	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds 
