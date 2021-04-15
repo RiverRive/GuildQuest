@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="tables.css">
 </head>
 <body class="adminHome">
-<center>
 	<h1>Welcome Admin!</h1>
 
 	<table class="adminTable">
