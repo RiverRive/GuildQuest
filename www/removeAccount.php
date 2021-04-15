@@ -2,7 +2,7 @@
 	require "guildQuestConfig.php";
 	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
 
-	if ($mysqli->conect_errno)
+	if ($mysqli->connect_errno)
         {
                 printf("Connect failed: %s\n", $mysqli->connect_error);
                 exit();
