@@ -5,7 +5,7 @@
 <link rel="stylesheet" href = "adminPages.css">
 </head>
 <body class="displayPage">
-<center>
+
 <h2>Display Players</h2>
 
 <?php

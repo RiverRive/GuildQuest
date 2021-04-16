@@ -6,7 +6,7 @@
 </head>
 
 <body class="displayPage">
-<center>
+
 <h2>Display Accounts</h2>
 
 <?php

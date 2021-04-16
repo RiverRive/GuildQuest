@@ -37,7 +37,7 @@
 		else
 		{
 			// go to player homepage
-			header("Location: playerHome.php");
+			header("Location: worldsHome.php?username=" . $row['Username']);
 			exit();
 		}
 	}
