@@ -135,19 +135,19 @@
 <br>
 
 <h2>
+	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
+		<input type="hidden" id="removeQuestButton" name="player" value="<?php echo "$playerID"?>">
+		<input type="submit" id = "removeQuestButton" value = "Remove Quest">
+	</form>
 	Active Quests: <?php echo "$playerName"?>
 	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="index.php">
 		<input type="hidden" id="addQuestButton" name="player" value="<?php echo "$playerID"?>">
 		<input type="submit" id = "addQuestButton" value = "Add Quest">
 	</form>
-	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="removeQuestButton" name="player" value="<?php echo "$playerID"?>">
-		<input type="submit" id = "removeQuestButton" value = "Remove Quest">
-	</form>
 </h2>
 
 <?php
-	// run query to select all from PLAYER table
+	// run query to select all quest
 	$result = $mysqli->query("SELECT QuestName, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel 
 								FROM QUEST;");
 ?>
@@ -186,21 +186,21 @@
 <br>
 <br>
 <h2>
+	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
+		<input type="hidden" id="removePlotButton" name="player" value="<?php echo "$playerID"?>">
+		<input type="hidden" id="removePlotButton" name="world" value="<?php echo "$worldID"?>">
+		<input type="submit" id = "removePlotButton" value = "Remove Plot">
+	</form>
 	Plots: <?php echo "$playerName"?>
 	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="index.php">
 		<input type="hidden" id="addPlotButton" name="player" value="<?php echo "$playerID"?>">
 		<input type="hidden" id="addPlotButton" name="world" value="<?php echo "$worldID"?>">
 		<input type="submit" id = "addPlotButton" value = "Add Plot">
 	</form>
-	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="removePlotButton" name="player" value="<?php echo "$playerID"?>">
-		<input type="hidden" id="removePlotButton" name="world" value="<?php echo "$worldID"?>">
-		<input type="submit" id = "removePlotButton" value = "Remove Plot">
-	</form>
 </h2>
 
 <?php
-	// run query to select all from PLAYER table
+	// run query to select all plots
 	$result = $mysqli->query("SELECT DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType 
 								FROM PLOT WHERE Owner = '$playerID';");
 ?>
@@ -238,6 +238,8 @@
 ?>
 </table>
 <br>
+
+
 <br>
 <h2>Guild: <?php echo "$guildName"?> </h2>
 <br>

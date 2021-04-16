@@ -10,9 +10,11 @@
                 exit();
         }
 
+    
     $accountUsername = $_POST['username'];
     $result = $mysqli->query("SELECT Email FROM ACCOUNT WHERE Username = \"" . $accountUsername . "\";");
 
+    // get infromation to insert new player in database
     $account = NULL;
     if($result && $row = $result->fetch_row())
     {
