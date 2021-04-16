@@ -27,25 +27,27 @@
 	<tr>
 		<td><a href = displayPlots.php>Display Plots</td>
 	</tr>
+	<tr>
+		<td><a href = displayMissions.php>Display Missions</td>
+	</tr>
 	</table>
 
 	<br>
 	<br>
 	<div>
-	<h2>Remove An Account</h2>
+	<h2>Account Actions</h2>
 
-	<form method="POST" action="removeAccount.php">
-		<label for="rmuser">Username:</label>
-		<input type="text" id="rmuser" name="rmuser"><br>
-		<input type="submit" id="removeAccount" value="Remove Account">
+	<form method="POST" action="adminActions.php">
+		<label for="user">Username:</label>
+		<input type="text" id="user" name="user"><br>
+		<select id="adminAction" name="adminAction">
+			<option value="banUser">Ban User</option>
+			<option value="unBanUser">Unban User</option>
+			<option value="removeUser">Remove Account</option>
+		</select>
+		<input type="submit" id="performAction" value="Perform Action">
 	</form>
 
-	<h2>Ban An Account</h2>
-	<form method="POST" action="banAccount.php">
-                <label for="banuser">Username:</label>
-                <input type="text" id=banuser" name="banuser"><br>
-                <input type="submit" id="banAccount" value="Ban Account">
-        </form>
 
 	</div>
 
