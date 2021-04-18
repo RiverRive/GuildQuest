@@ -1,9 +1,10 @@
 .adminTable {
-	border-collapse:collapse;
+	border-collapse:separate;
 	margin-left: auto;
   	margin-right: auto;
 	font-size: 0.9em;
 	min-width: 200px;
+	background-color:white;
 }
 
 .adminTable th {
@@ -23,8 +24,17 @@
 	background-color: #f3f3f3;
 }
 
+.adminTable tr a {
+	color:black;
+	text-decoration:none;
+	height: 100%;
+	width: 100%;
+	display:block;
+}
 
-
+.adminTable tr a:hover {
+	background-color: #0098FF;
+}
 
 .displayTable {
 	border-collapse:collapse;
@@ -38,7 +48,6 @@
 .displayTable th {
 	background-color: #009879;
 	color: white;
-	padding: 8px 12px;
 	text-align:left;
 }
 
@@ -55,3 +64,18 @@
 .displayTable td {
 	padding: 3px 9px;
 }
+
+
+#returnButton {
+        color: white;
+        background-color: #009879;
+        padding: 10px;
+        text-decoration:none;
+        border-radius: 10px;
+
+}
+
+#returnButton:hover {
+        background-color:#0098FF;
+}
+

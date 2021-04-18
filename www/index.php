@@ -5,12 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GuildQuest Home</title>
 	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="leader.css">
 </head>
 <body class = "homeBody">
 	<div class="header">
 		<h1>Welcome to GuildQuest!</h1>
 	</div>
-        <div class="login">
+	<br>
+	<br>       
+
+	<div class="login">
 	<h2>Login</h2>
 	<form method="POST" action="login.php">
                 <label for="username">Username:</label><br>
@@ -23,7 +27,7 @@
 	<br>
 	<br>
 	<br>
-	<div class="signup">
+	<div class="login">
 	<h2>Sign Up</h2>
 	<form method="POST" action="signup.php">
 		<label for="signUpEmail">Email:</label><br>
@@ -44,7 +48,7 @@
 	<br>
 	<div class = "login">
 	<h2>View Leaderboards</h2>
-	<a href="leaderboard.php">Leaderboards</a>
+	<a href="leaderboard.php" id="returnButton">Leaderboards</a>
 	</div>
 
 </body>

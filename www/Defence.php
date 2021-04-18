@@ -21,7 +21,7 @@
         }
 
 
-	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Experience DESC;");
+	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Defence DESC;");
 
 	if (!$result)
 	{
@@ -73,3 +73,4 @@
 
 </body>
 </html>
+

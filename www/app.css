@@ -2,35 +2,29 @@
 	text-align: center;
 	color: #0b361b;
 	background-color: CadetBlue;
-	outline: solid;
+	border: 3px solid green;
 	max-width: 700px;
 	margin: auto;
-	font-family: Monco, Helvetica, sans-serif;
+	font-family: Monaco, Helvetica, sans-serif;
+	border-radius: 10px;
+	padding: 3px;
 }
 
 .login {
 	text-align: center;
 	margin: auto;
-	padding: 10px;
+	padding: 15px 20px 20px 15px;
 	max-width: 300px;
 	border: 3px solid green;
 	background-color:Azure;
 	font-family:Monaco, Helvetica, sans-serif;
+	border-radius:10px;
 }
 
-.signup {
-	text-align:center;
-	margin: auto;
-	padding: 10px;
-	max-width:300px;
-	border:3px solid green;
-	background-color: Azure;
-	font-family:Monaco, Helvetica, sans-serif;
-}
 
 .homeBody {
 	background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/11/Backgrounds-Free-Fantasy-Art-HD.jpg');
-
+	padding: 20px;
 	background-size: auto;
 }
 

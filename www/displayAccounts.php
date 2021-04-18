@@ -62,8 +62,8 @@
 
 <br>
 <br>
-<a href = adminHome.php>Return to Admin Home Page</a>
-
-
+<a href = adminHome.php id="returnButton">Return to Admin Home Page</a>
+<br>
+<br>
 </body>
 </html>
