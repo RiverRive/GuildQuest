@@ -3,6 +3,7 @@
 <title>Administration</title>
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="tables.css">
+<link rel="stylesheet" href="adminPages.css">
 </head>
 <body class="adminHome">
 	<h1>Welcome Admin!</h1>
@@ -34,12 +35,19 @@
 
 	<br>
 	<br>
-	<div>
+	<div class="adminHome">
 	<h2>Account Actions</h2>
 
-	<form method="POST" action="adminActions.php">
-		<label for="user">Username:</label>
-		<input type="text" id="user" name="user"><br>
+	<form method="POST" action="adminActions.php" class="adminForm">
+		<div class="row">
+		  <div class="col-left">
+		    <label for="user">Username:</label>
+		  </div>
+		  <div class="col-right">
+		    <input type="text" id="user" name="user" placeholder="Enter username.."><br>
+		  </div>
+		</div>
+		<br>
 		<select id="adminAction" name="adminAction">
 			<option value="banUser">Ban User</option>
 			<option value="unBanUser">Unban User</option>
@@ -47,8 +55,74 @@
 		</select>
 		<input type="submit" id="performAction" value="Perform Action">
 	</form>
+	<br>
+	<br>
+	<h2>Create World</h2>
 
+	<form method="POST" action="addWorld.php" class="adminForm">
+		<div class="row">
+		  <div class="col-left">
+		    <label for="worldName">World Name:</label>
+		  </div>
+		  <div class="col-right">
+		    <input type="text" id="worldName" name="worldName" placeholder="Enter world name.."><br>
+		  </div>
+		</div>
+		
+		<div class="row">
+		  <div class="col-left">
+		    <label for="maxPlots">Max Plots:</label>
+		  </div>
+		  <div class="col-right">
+		    <input type="text" id="maxPlots" name="maxPlots" placeholder="Enter max plots.."><br>
+		  </div>
+		</div>
 
+		<div class="row">
+		  <div class="col-left">
+		    <label for ="playerCap">Player Capacity:</label>
+		  </div>
+		  <div class="col-right">
+		    <input type="text" id="playerCap" name="playerCap" placeholder="Enter player capacity.."><br>
+		  </div>
+		</div>
+
+		<div class="row">
+  		  <div class="col-left">
+		    <label for="plotPrices">Plot Prices:</label>
+		  </div>
+		  <div class="col-right">
+		    <input type="text" id="plotPrices" name="plotPrices" placeholder="Enter initial plot prices.."><br>
+		  </div>
+		</div>
+		
+		<div class="row">
+		  <div class="col-left">
+		    <label for="worldType">World Type:</label>
+		  </div>
+		  <div class="col-right">
+		    <label for="private">Private</label>
+		    <input type="radio" id="private" name="worldType" value="private">
+		    <label for="public">Public</label>
+		    <input type="radio" id="public" name="worldType" value="public"><br>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-left">
+		    <label for="pvp">PVP:</label>
+		  </div>
+  		  <div class="col-right">
+   		    <label for="true">Yes</label>
+                    <input type="radio" id="true" name="pvp" value="true">
+                    <label for="false">No</label>
+                    <input type="radio" id="false" name="pvp" value="false"><br>
+		  </div>
+		</div>
+		
+		<br>
+		<input type="submit" id="createWorld" value="Create World">
+	</form>
 	</div>
 
 
