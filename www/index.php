@@ -39,6 +39,13 @@
 
 	</form>
 	</div>
+	<br>
+	<br>
+	<br>
+	<div class = "login">
+	<h2>View Leaderboards</h2>
+	<a href="leaderboard.php">Leaderboards</a>
+	</div>
 
 </body>
 </html>
