@@ -59,7 +59,7 @@
 	<br>
 	<h2>Create World</h2>
 
-	<form method="POST" action="addWorld.php" class="adminForm">
+	<form method="POST" action="createWorld.php" class="adminForm">
 		<div class="row">
 		  <div class="col-left">
 		    <label for="worldName">World Name:</label>
@@ -102,9 +102,9 @@
 		  </div>
 		  <div class="col-right">
 		    <label for="private">Private</label>
-		    <input type="radio" id="private" name="worldType" value="private">
+		    <input type="radio" id="private" name="worldType" value="Private">
 		    <label for="public">Public</label>
-		    <input type="radio" id="public" name="worldType" value="public"><br>
+		    <input type="radio" id="public" name="worldType" value="Public"><br>
 		  </div>
 		</div>
 
@@ -113,10 +113,10 @@
 		    <label for="pvp">PVP:</label>
 		  </div>
   		  <div class="col-right">
-   		    <label for="true">Yes</label>
-                    <input type="radio" id="true" name="pvp" value="true">
-                    <label for="false">No</label>
-                    <input type="radio" id="false" name="pvp" value="false"><br>
+   		    <label for="TRUE">Yes</label>
+                    <input type="radio" id="TRUE" name="pvp" value=TRUE>
+                    <label for="FALSE">No</label>
+                    <input type="radio" id="FALSE" name="pvp" value=FALSE><br>
 		  </div>
 		</div>
 		
