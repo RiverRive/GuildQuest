@@ -1,8 +1,7 @@
 <?php
-// script to create a new world and insert it into the WORLD table
-
 require "guildQuestConfig.php";
 
+// get values from form
 $worldName = $_POST['worldName'];
 $maxPlots = $_POST['maxPlots'];
 $playerCap = $_POST['playerCap'];
@@ -10,20 +9,11 @@ $plotPrice = $_POST['plotPrices'];
 $worldType = $_POST['worldType'];
 $pvp = $_POST['pvp'];
 
-echo "$worldName <br>";
-echo "$maxPlots <br>";
-echo "$playerCap <br>";
-echo "$plotPrice <br>";
-echo "$worldType <br>";
-echo "$pvp <br>";
+// set pvp to boolean
 settype($pvp, "boolean");
-$type = gettype($pvp);
 
-echo "$type";
 // create random worldID
 $worldID = "W" . rand(0, 9999999999);;
-
-echo "$worldID"; 
 
 // connect to the database
 $mysqli = new mysqli($host, $user, $password, $dbname, $port);
@@ -34,14 +24,13 @@ if ($mysqli ->connect_errno)
 	exit();
 }
 
+// insert into DB
 $result = $mysqli->query("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PVP) VALUES ('$worldID', '$worldName', '$maxPlots', '$playerCap', '$worldType', '$plotPrice', '$pvp');");
 
-if ($result == FALSE)
-{
-	echo ("error:" . $mysqli->error);
-	exit();
-}
 
+header("Location: adminHome.php");
 $result->close();
 $mysqli->close();
 ?>
+
+

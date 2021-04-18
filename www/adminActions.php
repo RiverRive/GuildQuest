@@ -30,4 +30,5 @@
 
 	$mysqli->close();
 	header("Location: adminHome.php");
+	exit();
 ?>
