@@ -123,8 +123,9 @@
 
 <br>
 <br>
-<a href = index.php>Logout</a>
-
+<a href = index.php id="returnButton">Logout</a>
+<br>
+<br>
 
 </body>
 </html>

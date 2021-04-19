@@ -1,36 +1,42 @@
 <?php
-require "guildQuestConfig.php";
+	require "guildQuestConfig.php";
 
-// get values from form
-$worldName = $_POST['worldName'];
-$maxPlots = $_POST['maxPlots'];
-$playerCap = $_POST['playerCap'];
-$plotPrice = $_POST['plotPrices'];
-$worldType = $_POST['worldType'];
-$pvp = $_POST['pvp'];
+	// connect to the database
+	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
 
-// set pvp to boolean
-settype($pvp, "boolean");
+	if ($mysqli ->connect_errno)
+	{
+        	printf("Connect failed: %s\n", $mysqli->connect_error);
+        	exit();
+	}
 
-// create random worldID
-$worldID = "W" . rand(0, 9999999999);;
+	// prepare statement
+	$stmt = $mysqli->prepare("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PVP) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
-// connect to the database
-$mysqli = new mysqli($host, $user, $password, $dbname, $port);
+	// bind
+	$stmt->bind_param("sssssss", $worldID, $worldName, $maxPlots, $playerCap, $worldType, $plotPrice, $pvp);
 
-if ($mysqli ->connect_errno)
-{
-	printf("Connect failed: %s\n", $mysqli->connect_error);
-	exit();
-}
+	// get values from form
+	$worldName = $_POST['worldName'];
+	$maxPlots = $_POST['maxPlots'];
+	$playerCap = $_POST['playerCap'];
+	$plotPrice = $_POST['plotPrices'];
+	$worldType = $_POST['worldType'];
+	$pvp = $_POST['pvp'];
 
-// insert into DB
-$result = $mysqli->query("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PVP) VALUES ('$worldID', '$worldName', '$maxPlots', '$playerCap', '$worldType', '$plotPrice', '$pvp');");
+	// set pvp to boolean
+	settype($pvp, "boolean");
+
+	// create random worldID
+	$worldID = "W" . rand(0, 9999999999);;
 
 
-header("Location: adminHome.php");
-$result->close();
-$mysqli->close();
+	// insert into DB
+	$stmt->execute();
+
+	header("Location: adminHome.php");
+	$stmt->close();
+	$mysqli->close();
 ?>
 
 

@@ -5,10 +5,12 @@
 <link rel="stylesheet" href="playerHome.css">
 <link rel="stylesheet" href="tables.css">
 </head>
-
 <body class="displayPage">
+<h1>test</h1>
 
 <?php
+
+	
 
    	require "guildQuestConfig.php";
 	
@@ -17,17 +19,15 @@
         if ($mysqli->connect_errno)
         {
         	printf("Connect failed: %s\n", $mysqli->connect_error);
-		exit();
-	}
-
+			exit();
+		}
 
 	$worldID = $_GET['world'];
-    $accountUsername = $_GET['username'];
+    	$accountUsername = $_GET['username'];
 
 	// run query to select player stats
 	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds, Guild, GuildPosition, PlayerID  
 							FROM PLAYER, ACCOUNT WHERE PLAYER.Account = ACCOUNT.Email AND World = '$worldID' AND Username = '$accountUsername';");
-
 	$playerName = NULL;
 	$experience = NULL;
 	$coins = NULL;
@@ -62,10 +62,8 @@
 		$guildPos = $row[13];
 		$playerID = $row[14];
 	}
-
 	$result->close();
 	$result = $mysqli->query("SELECT worldName FROM WORLD WHERE WorldID = '$worldID';");
-
 	$worldName = NULL;
 	// getting world name
 	if($result && $row = $result->fetch_row())
@@ -74,30 +72,34 @@
 	}
 
 	$result->close();
-	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
-
+/*	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
 	$guildName = NULL;
 	$maxNumMembers = NULL;
 	$guildExperience = NULL;
 	$guildLevel = NULL;
 	$guildCount = NULL;
+	echo "before if";	
 	// getting guild stats if any
+
+	// ISSUE IS HERE
 	if($result && $row = $result->fetch_row())
 	{
+		echo "after conditional";
 		$guildName = $row[0];
 		$maxNumMembers = $row[1];
 		$guildExperience = $row[2];
 		$guildLevel = $row[3];
-
 		$result->close();
+		echo "before query";	
 		$result = $mysqli->query("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = '$guild' AND PLAYER.Guild = '$guild';");
+		
 		if($result && $row = $result->fetch_row())
 		{
 			$guildCount = $row[0];
 		}
 	}
-	$result->close();
-?>
+	$result->close();*/
+	?>
 
 <h2>
 	<a style="float: left; margin-left: 20px;" href = index.php>Logout</a>
@@ -233,12 +235,42 @@
         }
 
         $result->close();
-        $mysqli->close();
+        //$mysqli->close();
 
 ?>
 </table>
 <br>
+<?php
+	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
+        $guildName = NULL;
+        $maxNumMembers = NULL;
+        $guildExperience = NULL;
+        $guildLevel = NULL;
+        $guildCount = NULL;
+        echo "before if";
+        // getting guild stats if any
 
+        // ISSUE IS HERE
+        if($result && $row = $result->fetch_row())
+        {
+                echo "after conditional";
+                $guildName = $row[0];
+                $maxNumMembers = $row[1];
+                $guildExperience = $row[2];
+                $guildLevel = $row[3];
+                $result->close();
+                echo "before query";
+                $result = $mysqli->query("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = '$guild' AND PLAYER.Guild = '$guild';");
+
+                if($result && $row = $result->fetch_row())
+                {
+                        $guildCount = $row[0];
+                }
+        }
+	$result->close();
+	$mysqli->close();
+        
+?>
 
 <br>
 <h2>Guild: <?php echo "$guildName"?> </h2>

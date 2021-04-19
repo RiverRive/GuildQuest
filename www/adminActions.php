@@ -1,4 +1,5 @@
 <?php
+	// connect to DB
 	require "guildQuestConfig.php";
 	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
 
@@ -7,27 +8,31 @@
                 printf("Connect failed: %s\n", $mysqli->connect_error);
                 exit();
         }
-	// get username and write sql statement
-	$username = $_POST['user'];
+	
 	$adminAction = $_POST['adminAction'];
 
 	if ($adminAction == 'removeUser')
 	{
-		$sql = "DELETE FROM ACCOUNT WHERE Username = '$username';";
+		// prepare statement
+        	$stmt = $mysqli->prepare("DELETE FROM ACCOUNT WHERE Username = ?;");
 	}
 	else if ($adminAction == 'banUser')
 	{
-		$sql = "UPDATE ACCOUNT SET IsBanned = TRUE WHERE Username = '$username';";
+		$stmt = $mysqli->prepare("UPDATE ACCOUNT SET IsBanned = TRUE WHERE Username = ?;");
 	}
 	else if ($adminAction == 'unBanUser')
 	{
-		$sql = "UPDATE ACCOUNT SET IsBanned = FALSE WHERE Username = '$username'";
+		$stmt = $mysqli->prepare("UPDATE ACCOUNT SET IsBanned = FALSE WHERE Username = ?;");
 	}
 
 	// query database
-	if ($mysqli->query($sql) == FALSE)
-		exit();
+	$stmt->bind_param("s", $username);
 
+	$username = $_POST['user'];
+	
+	$stmt->execute();
+
+	$stmt->close();
 	$mysqli->close();
 	header("Location: adminHome.php");
 	exit();
