@@ -1,5 +1,5 @@
 <?php
-
+	// connect to DB
    	require "guildQuestConfig.php";
 
 	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
@@ -9,16 +9,25 @@
         	printf("Connect failed: %s\n", $mysqli->connect_error);
 		exit();
 	}
-	echo "this workd";
 
+	// prepare statement
+	$stmt = $mysqli->prepare("INSERT INTO ACCOUNT (Email, Username, Password, Role, DateSignedUp) VALUES(?, ?, ?, ?, ?);");
+
+	// bind
+	$stmt->bind_param("sssss", $email, $username, $pass, $role, $currentDate);
+
+	// set parameters
 	$email = $_POST['signUpEmail'];
 	$username = $_POST['signUpUser'];
 	$pass = $_POST['signUpPass'];
+	$role = 'User';
 	$currentDate = date("Y-m-d");
-	
-	$sql = "INSERT INTO ACCOUNT (Email, Username, Password, Role, DateSignedUp, IsBanned) VALUES('$email', '$username', '$pass', 'User', '$currentDate', FALSE);";
 
-	if($mysqli->query($sql) == TRUE)
+	//execute
+	$result = $stmt->execute();
+	
+
+	if($result == TRUE)
 	{
 		header("Location: playerHome.php");
 	}
@@ -29,7 +38,7 @@
 	}
 
 	
-
+	$stmt->close();
 	$mysqli->close();
 ?>
 

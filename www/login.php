@@ -11,11 +11,22 @@
 	}
 
 
+	// prepare
+	$stmt = $mysqli->prepare("SELECT * FROM ACCOUNT WHERE Username = ? AND Password = ?;");
+
+	// bind
+	$stmt->bind_param("ss", $suppliedUsername, $suppliedPassword);
+
+	// set parameters
 	$suppliedUsername = $_POST['username'];
-	$suppliedPassword = $_POST['password'];
+        $suppliedPassword = $_POST['password'];
 
-	$result = $mysqli->query("SELECT * FROM ACCOUNT WHERE Username = '$suppliedUsername' AND Password = '$suppliedPassword';");
 
+	// execute
+	$stmt->execute();
+
+	// get result
+	$result = $stmt->get_result();
 	$length = $result->num_rows;
 
 
@@ -41,7 +52,8 @@
 			exit();
 		}
 	}
-	
+
+	$stmt->close();	
 	$result->close();
 	$mysqli->close();
 		
