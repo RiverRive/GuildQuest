@@ -124,14 +124,26 @@
 </div>
 <br>
 
+
+<?php
+	// run query to obtain all available quests according to level
+	$stmt = $mysqli->prepare("SELECT * FROM QUEST WHERE QUEST.MinLevel <= ?;");
+	$stmt->bind_param("i", $level);
+	$stmt->execute();
+	$availableQuests = $stmt->get_result();
+	$stmt->close();
+?>
+
+
 <h2>
-	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="removeQuestButton" name="player" value="<?php echo "$playerID"?>">
-		<input type="submit" id = "removeQuestButton" value = "Remove Quest">
-	</form>
 	Active Quests: <?php echo "$playerName"?>
-	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="addQuestButton" name="player" value="<?php echo "$playerID"?>">
+	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="addMission.php?username=<?php  echo "$accountUsername" ?>">
+		<select name="quest" id="quest">
+<?php
+	// creates options for available quests, value is PK of quest
+	while($row = $availableQuests->fetch_row())
+		echo "<option value=\"$row[0]\">$row[1]</option>";
+?>
 		<input type="submit" id = "addQuestButton" value = "Add Quest">
 	</form>
 </h2>
@@ -164,10 +176,17 @@
         {
                 while($row=$result->fetch_row())
                 {
-                        echo "<tr>";
+			echo "<tr>";
                         for($i = 0; $i < $result->field_count; $i++)
-                        {
-                                echo "<td> $row[$i] </td>";
+			{
+				if ($i == 0)
+				{
+					echo"<td>";
+					echo "<a href=\"completeQuest.php\" id=\"completeQuestButton\">Complete</a>";
+					echo "$row[$i] </td>";
+				}
+				else
+                                	echo "<td>$row[$i] </td>";
                         }
                         echo "</tr>";
                 }
