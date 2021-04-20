@@ -10,30 +10,42 @@
                 exit();
         }
 
-    
+    // prepared statement and execution for getting email from the account (Email is PK)
+    $stmt = $mysqli->prepare("SELECT Email FROM ACCOUNT WHERE Username = ?;");
+    $stmt->bind_param("s", $accountUsername);
+
     $accountUsername = $_POST['username'];
-    $result = $mysqli->query("SELECT Email FROM ACCOUNT WHERE Username = \"" . $accountUsername . "\";");
+    $stmt->execute();
+
+
+    $result = $stmt->get_result();
+
+    $stmt->close();
 
     // get infromation to insert new player in database
     $account = NULL;
+
     if($result && $row = $result->fetch_row())
     {
         $account = $row[0];
     }
+
+    // prepared statement for inserting into player table
+    $stmt = $mysqli->prepare("INSERT INTO PLAYER (PlayerID, PlayerName, Account, DateLastLogged, World) VALUES(?, ?, ?, ?, ?);");
+    $stmt->bind_param("sssss", $playerID, $playerName, $account, $currentDate, $worldID);
+
     $playerName = $_POST['playerName'];
     $worldID = $_POST['world'];
     $playerID = "P" . rand(0, 9999999999);;
     $currentDate = date("Y-m-d");
 
-	$sql = "INSERT INTO PLAYER (PlayerID, PlayerName, Account, DateLastLogged, World)  
-                VALUES('$playerID', '$playerName', '$account', '$currentDate', '$worldID');";
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-	if ($mysqli->query($sql) == FALSE)
-	{
-		exit();
-	}
+  
     header("Location: playerHome.php?username=" . $accountUsername . "&world=" . $worldID);
 
     $result->close();
-	$mysqli->close();
+    $stmt->close();
+    $mysqli->close();
 ?>

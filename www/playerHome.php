@@ -9,9 +9,6 @@
 <h1>test</h1>
 
 <?php
-
-	
-
    	require "guildQuestConfig.php";
 	
 	$mysqli = new mysqli($host, $user, $password, $dbname, $port);
@@ -21,13 +18,21 @@
         	printf("Connect failed: %s\n", $mysqli->connect_error);
 			exit();
 		}
+	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds, Guild, GuildPosition, PlayerID FROM PLAYER, ACCOUNT WHERE PLAYER.Account = ACCOUNT.Email AND World= ? AND Username = ?;");
+
+	$stmt->bind_param("ss", $worldID, $accountUsername);
+
 
 	$worldID = $_GET['world'];
     	$accountUsername = $_GET['username'];
 
 	// run query to select player stats
-	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds, Guild, GuildPosition, PlayerID  
-							FROM PLAYER, ACCOUNT WHERE PLAYER.Account = ACCOUNT.Email AND World = '$worldID' AND Username = '$accountUsername';");
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$stmt->close();
+	
+	
+	// variable declarations
 	$playerName = NULL;
 	$experience = NULL;
 	$coins = NULL;
@@ -43,7 +48,8 @@
 	$guild = NULL;
 	$guildPos = NULL;
 	$playerID = NULL;
-	// getting player stats
+
+	// getting player stats from above query
 	if($result && $row = $result->fetch_row())
 	{
 		$playerName = $row[0];
@@ -62,9 +68,17 @@
 		$guildPos = $row[13];
 		$playerID = $row[14];
 	}
+
 	$result->close();
-	$result = $mysqli->query("SELECT worldName FROM WORLD WHERE WorldID = '$worldID';");
+
+	// run query to get world name
+	$stmt = $mysqli->prepare("SELECT worldName FROM WORLD WHERE WorldID = ?;");
+	$stmt->bind_param("s", $worldID);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	
 	$worldName = NULL;
+	
 	// getting world name
 	if($result && $row = $result->fetch_row())
 	{
@@ -72,34 +86,9 @@
 	}
 
 	$result->close();
-/*	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
-	$guildName = NULL;
-	$maxNumMembers = NULL;
-	$guildExperience = NULL;
-	$guildLevel = NULL;
-	$guildCount = NULL;
-	echo "before if";	
-	// getting guild stats if any
+	$stmt->close();
 
-	// ISSUE IS HERE
-	if($result && $row = $result->fetch_row())
-	{
-		echo "after conditional";
-		$guildName = $row[0];
-		$maxNumMembers = $row[1];
-		$guildExperience = $row[2];
-		$guildLevel = $row[3];
-		$result->close();
-		echo "before query";	
-		$result = $mysqli->query("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = '$guild' AND PLAYER.Guild = '$guild';");
-		
-		if($result && $row = $result->fetch_row())
-		{
-			$guildCount = $row[0];
-		}
-	}
-	$result->close();*/
-	?>
+?>
 
 <h2>
 	<a style="float: left; margin-left: 20px;" href = index.php>Logout</a>
@@ -150,8 +139,12 @@
 
 <?php
 	// run query to select all quest
-	$result = $mysqli->query("SELECT QuestName, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel 
-								FROM QUEST;");
+	$stmt = $mysqli->prepare("SELECT QuestName, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel FROM QUEST;");
+
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	$stmt->close();
 ?>
 
 <table class="displayTable">
@@ -203,8 +196,12 @@
 
 <?php
 	// run query to select all plots
-	$result = $mysqli->query("SELECT DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType 
-								FROM PLOT WHERE Owner = '$playerID';");
+	$stmt = $mysqli->prepare("SELECT DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType FROM PLOT WHERE Owner = ?;");
+
+	$stmt->bind_param("s", $playerID);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$stmt->close();
 ?>
 
 <table class="displayTable">
@@ -235,22 +232,26 @@
         }
 
         $result->close();
-        //$mysqli->close();
 
 ?>
 </table>
 <br>
 <?php
-	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
-        $guildName = NULL;
+	$stmt = $mysqli->prepare("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM GUILD WHERE GuildID = ?;");
+//	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
+
+	$stmt->bind_param("s", $guild);
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	// variable declarations
+	$guildName = NULL;
         $maxNumMembers = NULL;
         $guildExperience = NULL;
         $guildLevel = NULL;
         $guildCount = NULL;
-        echo "before if";
-        // getting guild stats if any
-
-        // ISSUE IS HERE
+	
+	// getting guild stats if any
         if($result && $row = $result->fetch_row())
         {
                 echo "after conditional";
@@ -268,6 +269,7 @@
                 }
         }
 	$result->close();
+	$stmt->close();
 	$mysqli->close();
         
 ?>

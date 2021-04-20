@@ -20,7 +20,7 @@
 	</div>
         <div class="login">
 	<h2>Register</h2>
-	<form method="POST" action="addWorld.php">
+	<form method="POST" action="addWorld.php" class="adminForm">
                 <label for="username">Player Name:</label><br>
                 <input type="text" id="playerName" name="playerName"><br>
                 <input type="hidden" id="world" name="world" value="<?php echo "$worldID"; ?>"><br>
@@ -33,11 +33,14 @@
 
 
 <br>
-<a href = worldsHome.php?username=<?php  echo "$accountUsername" ?>>Worlds</a>
+<a href = worldsHome.php?username=<?php  echo "$accountUsername" ?> id="returnButton">Worlds</a>
 <br>
 <br>
-<a href = index.php>Logout</a>
-
+<br>
+<br>
+<a href = index.php id="returnButton">Logout</a>
+<br>
+<br>
 </body>
 </html>
 
