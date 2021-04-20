@@ -55,6 +55,59 @@
 		</select>
 		<input type="submit" id="performAction" value="Perform Action">
 	</form>
+
+	<br>
+	<br>
+
+	<div class="adminHome">
+        <h2>Search</h2>
+	<h3>Note: not all values need to be filled in for search</h3>
+        <form method="POST" action="search.php" class="adminForm">
+                <div class="row">
+                  <div class="col-left">
+                    <label for="user">Username:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="user" name="user" placeholder="Enter username.."><br>
+                  </div>
+		</div>
+		<div class="row">
+                  <div class="col-left">
+                    <label for "guildName">Guild Name:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="guildName" name="guildName" placeholder="Enter guild name.."><br>
+                  </div>
+                </div>
+		<div class="row">
+                  <div class="col-left">
+                    <label for "moneySpent">Money Spent:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="moneySpent" name="moneySpent" placeholder="Enter minimum money spent.."><br>
+                  </div>
+                </div>
+		<div class="row">
+                  <div class="col-left">
+                    <label for "worldName">World Name:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="worldName" name="worldName" placeholder="Enter World name.."><br>
+                  </div>
+                </div>
+
+                <br>
+                <select id="search" name="search">
+                        <option value="findUser">Find Single User</option>
+                        <option value="findBanned">Find Banned Users</option>
+			<option value="findGuild">Find Guild</option>
+			<option value="findSpender">Find Spenders</option>
+			<option value="findWorld">Find World</option>
+                </select>
+                <input type="submit" id="performAction" value="Perform Action">
+        </form>
+
+
 	<br>
 	<br>
 	<h2>Create World</h2>
