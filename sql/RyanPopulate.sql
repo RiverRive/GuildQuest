@@ -2,38 +2,38 @@
 
 
 -- populate Account x5--
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned)
-VALUES ('ryandriscoll0@gmail.com', 'rcdriscoll', 'targyiscool', 'Admin', '2020-01-01', NULL, 0.00, 0.00, FALSE);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned)
+VALUES ('ryandriscoll0@gmail.com', 'rcdriscoll', 'targyiscool', 'Admin', '2020-01-01', 0.00, 0.00, FALSE);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned)
-VALUES ('bilbo@gmail.com', 'BilboBaginz', 'hobbit', 'User', '2020-01-01', NULL, 0.00, 0.00, FALSE);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned)
+VALUES ('bilbo@gmail.com', 'BilboBaginz', 'hobbit', 'User', '2020-01-01', 0.00, 0.00, FALSE);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned)
-VALUES ('yods@gmail.com', 'Yoda', 'force',  'User', '2020-01-01', NULL, 0.00, 0.00, FALSE);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned)
+VALUES ('yods@gmail.com', 'Yoda', 'force',  'User', '2020-01-01', 0.00, 0.00, FALSE);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned)
-VALUES ('gnome@gmail.com', 'GnomeButcher', 'gnome',  'User', '2021-03-10', NULL, 0.00, 0.00, FALSE);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned)
+VALUES ('gnome@gmail.com', 'GnomeButcher', 'gnome',  'User', '2021-03-10', 0.00, 0.00, FALSE);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned)
-VALUES ('undertaker@gmail.com', 'TheUndertaker', 'undertaker',  'User', '2021-03-01', NULL, 0.00, 0.00, FALSE);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned)
+VALUES ('undertaker@gmail.com', 'TheUndertaker', 'undertaker',  'User', '2021-03-01', 0.00, 0.00, FALSE);
 
 
 
 -- populate World x5--
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP)
-VALUES ('RDW001', 'Ryans World', 20, 5, 'Private', 100, FALSE);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP)
+VALUES ('RDW001', 'Ryans World', 20, 5, 100, FALSE);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP)
-VALUES ('RDW002', 'Crazy World', 100, 10, 'Public', 100, TRUE);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP)
+VALUES ('RDW002', 'Crazy World', 100, 10, 100, TRUE);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP)
-VALUES ('RDW003', 'Lil World', 500, 10, 'Private', 100, FALSE);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP)
+VALUES ('RDW003', 'Lil World', 500, 10, 100, FALSE);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP)
-VALUES ('RDW004', 'Mega World', 500, 50, 'Public', 100, FALSE);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP)
+VALUES ('RDW004', 'Mega World', 500, 50, 100, FALSE);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP)
-VALUES ('RDW005', 'Ryanopolis', 1000, 100, 'Private', 1000, FALSE);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP)
+VALUES ('RDW005', 'Ryanopolis', 1000, 100, 1000, FALSE);
 
 
 

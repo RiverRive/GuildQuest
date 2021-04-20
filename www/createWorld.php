@@ -11,17 +11,16 @@
 	}
 
 	// prepare statement
-	$stmt = $mysqli->prepare("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PVP) VALUES (?, ?, ?, ?, ?, ?, ?);");
+	$stmt = $mysqli->prepare("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PVP) VALUES (?, ?, ?, ?, ?, ?);");
 
 	// bind
-	$stmt->bind_param("sssssss", $worldID, $worldName, $maxPlots, $playerCap, $worldType, $plotPrice, $pvp);
+	$stmt->bind_param("ssssss", $worldID, $worldName, $maxPlots, $playerCap, $plotPrice, $pvp);
 
 	// get values from form
 	$worldName = $_POST['worldName'];
 	$maxPlots = $_POST['maxPlots'];
 	$playerCap = $_POST['playerCap'];
 	$plotPrice = $_POST['plotPrices'];
-	$worldType = $_POST['worldType'];
 	$pvp = $_POST['pvp'];
 
 	// set pvp to boolean

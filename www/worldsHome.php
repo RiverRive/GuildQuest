@@ -23,7 +23,7 @@
 
 
 	// run query to select active worlds
-	$stmt = $mysqli->prepare("SELECT DISTINCT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?;");
+	$stmt = $mysqli->prepare("SELECT DISTINCT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?;");
 
 	$stmt->bind_param("s", $username);
 
@@ -36,7 +36,7 @@
 
 	
 	// prepared statement for displaying unregistered worlds
-	$stmt = $mysqli->prepare("SELECT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD WHERE WorldID NOT IN (SELECT WorldId FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?);");
+	$stmt = $mysqli->prepare("SELECT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD WHERE WorldID NOT IN (SELECT WorldId FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?);");
 
 	$stmt->bind_param("s", $username);
 	$stmt->execute();

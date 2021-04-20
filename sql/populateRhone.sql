@@ -1,38 +1,38 @@
 
 /* Accounts */
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("rhonegavois@gmail.com", "RiverGuy", "R12345", "Admin", "2021-02-19", 37, 0.00, 0.00, True);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("rhonegavois@gmail.com", "RiverGuy", "R12345", "Admin", "2021-02-19", 0.00, 0.00, True);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("epenniall0@amazonaws.com", "FluffyMan", "F12345", "User", "2021-02-19", 37, 0.00, 0.00, True);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("epenniall0@amazonaws.com", "FluffyMan", "F12345", "User", "2021-02-19", 0.00, 0.00, True);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("smertgen1@cbsnews.com", "HalfRoyal", "H12345", "User", "2020-12-09", 26, 14.56, 0.00, False);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("smertgen1@cbsnews.com", "HalfRoyal", "H12345", "User", "2020-12-09", 14.56, 0.00, False);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("roger2@mediafire.com", "Carnivul", "C12345", "User", "2020-09-30", 57, 6.99, 10.00, False);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("roger2@mediafire.com", "Carnivul", "C12345", "User", "2020-09-30", 6.99, 10.00, False);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("nomurtagh3@fotki.com", "LimeBat", "L12345", "Mod", "2021-01-13", 3, 100.00, 50.99, False);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("nomurtagh3@fotki.com", "LimeBat", "L12345", "Mod", "2021-01-13", 100.00, 50.99, False);
 
-INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, LeaderboardRanking, Balance, MoneySpent, IsBanned) 
-VALUES("hpaolillo4@wsj.com", "YoMama", "Y12345", "Mod", "2020-12-28", 23, 57.35, 67.43, False);
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("hpaolillo4@wsj.com", "YoMama", "Y12345", "Mod", "2020-12-28", 57.35, 67.43, False);
 
 /* Worlds */
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP) 
-VALUES("RGW7336296753", "Epic World", 1000, 50, "Public", 1000, True);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP) 
+VALUES("RGW7336296753", "Epic World", 1000, 50, 1000, True);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP) 
-VALUES("RGW2298814338", "Earth Map", 1000, 50, "Public", 1000, False);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP) 
+VALUES("RGW2298814338", "Earth Map", 1000, 50, 1000, False);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP) 
-VALUES("RGW9931475516", "A Man", 50, 3, "Private", 25, False);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP) 
+VALUES("RGW9931475516", "A Man", 50, 3, 25, False);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP) 
-VALUES("RGW0819524304", "New World", 500, 20, "Public", 100, True);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP) 
+VALUES("RGW0819524304", "New World", 500, 20, 100, True);
 
-INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP) 
-VALUES("RGW9607895758", "War World", 750, 10, "Public", 5000, True);
+INSERT INTO WORLD(WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP) 
+VALUES("RGW9607895758", "War World", 750, 10, 5000, True);
 
 /* Quests */
 INSERT INTO QUEST(QuestID, QuestName, QuestDescription, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel) 

@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="tables.css">
 </head>
 <body class="displayPage">
-<h1>test</h1>
 
 <?php
    	require "guildQuestConfig.php";
@@ -253,13 +252,11 @@
 	// getting guild stats if any
         if($result && $row = $result->fetch_row())
         {
-                echo "after conditional";
                 $guildName = $row[0];
                 $maxNumMembers = $row[1];
                 $guildExperience = $row[2];
                 $guildLevel = $row[3];
                 $result->close();
-                echo "before query";
 
 		$stmt = $mysqli->prepare("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = ? AND PLAYER.Guild = ?;");
 		$stmt->bind_param("ss", $guild, $guild);
