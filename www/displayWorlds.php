@@ -21,10 +21,10 @@
                 exit();
         }
 
+	$stmt = $mysqli->prepare("SELECT * FROM WORLD;");
+	$stmt->execute();
 
-
-        // run query to select all from Account table
-        $result = $mysqli->query("SELECT * FROM WORLD;");
+	$result = $stmt->get_result();
 ?>
 
 <table class="displayTable">
@@ -56,6 +56,7 @@
 	}
 
 	$result->close();
+	$stmt->close();
 	$mysqli->close();
 
 ?>

@@ -17,10 +17,11 @@
                 printf("Connect failed: %s\n", $mysqli->connect_error);
                 exit();
         }
-
-
+	
 	// run query to select all from PLAYER table
-	$result = $mysqli->query("SELECT * FROM PLOT;");
+	$stmt = $mysqli->prepare("SELECT * FROM PLOT");
+	$stmt->execute();
+	$result = $stmt->get_result();
 ?>
 
 <table class="displayTable">
@@ -50,7 +51,8 @@
                 }
         }
 
-        $result->close();
+	$result->close();
+	$stmt->close();
         $mysqli->close();
 
 ?>
