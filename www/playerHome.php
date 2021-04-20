@@ -238,7 +238,6 @@
 <br>
 <?php
 	$stmt = $mysqli->prepare("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM GUILD WHERE GuildID = ?;");
-//	$result = $mysqli->query("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM Guild WHERE GuildID = '$guild';");
 
 	$stmt->bind_param("s", $guild);
 	$stmt->execute();
@@ -261,13 +260,19 @@
                 $guildLevel = $row[3];
                 $result->close();
                 echo "before query";
-                $result = $mysqli->query("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = '$guild' AND PLAYER.Guild = '$guild';");
+
+		$stmt = $mysqli->prepare("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = ? AND PLAYER.Guild = ?;");
+		$stmt->bind_param("ss", $guild, $guild);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
 
                 if($result && $row = $result->fetch_row())
                 {
                         $guildCount = $row[0];
                 }
-        }
+	}
+
 	$result->close();
 	$stmt->close();
 	$mysqli->close();
