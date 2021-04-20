@@ -20,8 +20,12 @@
                 exit();
         }
 
+	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Coins DESC;");
 
-	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Coins DESC;");
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+
 
 	if (!$result)
 	{
@@ -62,7 +66,8 @@
 		}
 	}
 
-        $result->close();
+	$result->close();
+	$stmt->close();
         $mysqli->close();
 
 ?>

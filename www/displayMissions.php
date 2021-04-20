@@ -21,10 +21,10 @@
                 exit();
         }
 
-
-
-        // run query to select all from Account table
-        $result = $mysqli->query("SELECT * FROM MISSION;");
+        // run query to select all from mission table
+	$stmt = $mysqli->prepare("SELECT * FROM MISSION");
+	$stmt->execute();
+	$result = $stmt->get_result();
 ?>
 
 <table class="displayTable">
@@ -55,6 +55,7 @@
 	}
 
 	$result->close();
+	$stmt->close();
 	$mysqli->close();
 
 ?>

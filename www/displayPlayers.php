@@ -18,9 +18,10 @@
                 exit();
         }
 
+	$stmt = $mysqli->prepare("SELECT * FROM PLAYER");
+	$stmt->execute();
+	$result=$stmt->get_result();
 
-	// run query to select all from PLAYER table
-	$result = $mysqli->query("SELECT * FROM PLAYER;");
 ?>
 
 <table class="displayTable">
@@ -51,7 +52,8 @@
         }
 
         $result->close();
-        $mysqli->close();
+	$stmt->close();   
+	$mysqli->close();
 
 ?>
 </table>

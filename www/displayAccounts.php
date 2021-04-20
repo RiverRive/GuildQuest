@@ -21,10 +21,12 @@
                 exit();
         }
 
+	$stmt = $mysqli->prepare("SELECT * FROM ACCOUNT");
 
+	$stmt->execute();
 
-        // run query to select all from Account table
-        $result = $mysqli->query("SELECT * FROM ACCOUNT;");
+	$result = $stmt->get_result();
+	
 ?>
 
 <table class="displayTable">
@@ -55,6 +57,7 @@
 	}
 
 	$result->close();
+	$stmt->close();
 	$mysqli->close();
 
 ?>

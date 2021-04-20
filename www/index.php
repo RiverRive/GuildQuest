@@ -48,7 +48,7 @@
 	<br>
 	<div class = "login">
 	<h2>View Leaderboards</h2>
-	<a href="leaderboard.php" id="returnButton">Leaderboards</a>
+	<a href="Experience.php" id="returnButton">Leaderboards</a>
 	</div>
 
 </body>

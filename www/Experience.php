@@ -19,10 +19,11 @@
                 printf("Connect failed: %s\n", $mysqli->connect_error);
                 exit();
         }
-
-
-	$result = $mysqli->query("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Experience DESC;");
-
+	
+	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Experience DESC;");
+	
+	$stmt->execute();
+	$result = $stmt->get_result();
 	if (!$result)
 	{
 		echo("Error: " . $mysqli->error());
@@ -63,7 +64,8 @@
 	}
 
         $result->close();
-        $mysqli->close();
+	$stmt -> close();       
+	$mysqli->close();
 
 ?>
 </table>
