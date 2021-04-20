@@ -22,13 +22,29 @@
 
 
 
-        // run query to select all from Account table
-        $activeWorlds = $mysqli->query("SELECT DISTINCT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT 
-										WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = \"" . $_GET["username"] . "\";");
-		$unregisteredWorlds = $mysqli->query("SELECT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD 
-												WHERE WorldID NOT IN
-												(SELECT WorldID FROM WORLD, PLAYER, ACCOUNT 
-												WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = \"" . $_GET["username"] . "\");");
+	// run query to select active worlds
+	$stmt = $mysqli->prepare("SELECT DISTINCT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?;");
+
+	$stmt->bind_param("s", $username);
+
+	$username = $_GET['username'];
+
+	$stmt->execute();
+	$activeWorlds = $stmt->get_result();
+	
+	$stmt->close();
+
+	
+	// prepared statement for displaying unregistered worlds
+	$stmt = $mysqli->prepare("SELECT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, WorldType, InitialPlotPrices, PvP FROM WORLD WHERE WorldID NOT IN (SELECT WorldId FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?);");
+
+	$stmt->bind_param("s", $username);
+	$stmt->execute();
+
+	$unregisteredWorlds = $stmt->get_result();
+	
+	$stmt->close();
+
 ?>
 
 <table class="displayTable">
