@@ -1,6 +1,9 @@
 
 /* Accounts */
 INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
+VALUES("guildquestadmin@gmail.com", "admin", "a12345", "Admin", "2021-01-01", 0.00, 0.00, False);
+
+INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
 VALUES("rhonegavois@gmail.com", "RiverGuy", "R12345", "Admin", "2021-02-19", 0.00, 0.00, True);
 
 INSERT INTO ACCOUNT(Email, Username, Password, Role, DateSignedUp, Balance, MoneySpent, IsBanned) 
