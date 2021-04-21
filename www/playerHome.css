@@ -64,3 +64,12 @@ p{
 	padding: 1px;
 	border-radius: 5px;
 }
+
+#joinGuildButton {
+	background-color: #0987FF;
+}
+
+#joinGuildButton:hover {
+	background-color:red;
+}
+
