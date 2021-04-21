@@ -67,7 +67,7 @@ CREATE TABLE PLAYER
 	TitleRank				CHAR(10) CHECK(TitleRank IN('Player','Donor', 'SuperDonor')) DEFAULT 'Player',
 	Guild					CHAR(30),
     FOREIGN KEY (Guild) REFERENCES GUILD(GuildName) ON DELETE SET NULL,
-	GuildPosition			CHAR(6) CHECK(GuildPosition IN('Leader', 'Elder', 'Member', NULL)),
+	GuildPosition			CHAR(6) CHECK(GuildPosition IN('Leader', 'Elder', 'Member')) DEFAULT 'Member',
 	World					CHAR(64) NOT NULL,
     FOREIGN KEY (World) REFERENCES WORLD(WorldName) ON DELETE CASCADE,
 	Wood					INTEGER DEFAULT 0,

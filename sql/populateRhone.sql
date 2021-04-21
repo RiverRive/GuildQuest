@@ -39,6 +39,9 @@ VALUES("War World", 750, 10, 5000, True);
 
 /* Quests */
 INSERT INTO QUEST(QuestName, QuestDescription, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel) 
+VALUES("First Quest", "My first quest", 50, 200, 0, 0, 00, "00:00:01.0000000", 0);
+
+INSERT INTO QUEST(QuestName, QuestDescription, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel) 
 VALUES("Fish", "Collect 5 pieces of fish", 50, 50, 0, 0, 10, "00:00:10.0000000", 1);
 
 INSERT INTO QUEST(QuestName, QuestDescription, CoinsGain, ExperienceGain, AttackGain, DefenceGain, HealthGain, TimeLimit, MinLevel) 
