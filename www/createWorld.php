@@ -11,10 +11,10 @@
 	}
 
 	// prepare statement
-	$stmt = $mysqli->prepare("INSERT INTO WORLD (WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PVP) VALUES (?, ?, ?, ?, ?, ?);");
+	$stmt = $mysqli->prepare("INSERT INTO WORLD (WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PVP) VALUES (?, ?, ?, ?, ?);");
 
 	// bind
-	$stmt->bind_param("ssssss", $worldID, $worldName, $maxPlots, $playerCap, $plotPrice, $pvp);
+	$stmt->bind_param("sssss", $worldName, $maxPlots, $playerCap, $plotPrice, $pvp);
 
 	// get values from form
 	$worldName = $_POST['worldName'];
@@ -25,10 +25,6 @@
 
 	// set pvp to boolean
 	settype($pvp, "boolean");
-
-	// create random worldID
-	$worldID = "W" . rand(0, 9999999999);;
-
 
 	// insert into DB
 	$stmt->execute();

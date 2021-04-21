@@ -148,18 +148,6 @@
 		    <input type="text" id="plotPrices" name="plotPrices" placeholder="Enter initial plot prices.."><br>
 		  </div>
 		</div>
-		
-		<div class="row">
-		  <div class="col-left">
-		    <label for="worldType">World Type:</label>
-		  </div>
-		  <div class="col-right">
-		    <label for="private">Private</label>
-		    <input type="radio" id="private" name="worldType" value="Private">
-		    <label for="public">Public</label>
-		    <input type="radio" id="public" name="worldType" value="Public"><br>
-		  </div>
-		</div>
 
 		<div class="row">
 		  <div class="col-left">

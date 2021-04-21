@@ -10,7 +10,6 @@
 
 <?php
     $accountUsername = $_POST['username'];
-    $worldID = $_POST['world'];
     $worldName = $_POST['worldName'];
 ?>
 
@@ -23,7 +22,6 @@
 	<form method="POST" action="addWorld.php" class="adminForm">
                 <label for="username">Player Name:</label><br>
                 <input type="text" id="playerName" name="playerName"><br>
-                <input type="hidden" id="world" name="world" value="<?php echo "$worldID"; ?>"><br>
 				<input type="hidden" id="world" name="username" value="<?php echo "$accountUsername"; ?>"><br>
 				<input type="hidden" id="world" name="worldName" value="<?php echo "$worldName"; ?>"><br>
                 <input type="submit" id = "loginButton" value = "Login">

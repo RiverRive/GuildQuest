@@ -20,7 +20,7 @@
                 exit();
         }
 
-	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildID ORDER BY Health DESC;");
+	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, GuildName FROM PLAYER LEFT JOIN GUILD ON PLAYER.Guild = GUILD.GuildName ORDER BY Health DESC;");
 
 	$stmt->execute();
 

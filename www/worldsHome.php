@@ -23,7 +23,7 @@
 
 
 	// run query to select active worlds
-	$stmt = $mysqli->prepare("SELECT DISTINCT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?;");
+	$stmt = $mysqli->prepare("SELECT DISTINCT WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldName AND PLAYER.Account = ACCOUNT.Email AND Username = ?;");
 
 	$stmt->bind_param("s", $username);
 
@@ -36,7 +36,7 @@
 
 	
 	// prepared statement for displaying unregistered worlds
-	$stmt = $mysqli->prepare("SELECT WorldID, WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD WHERE WorldID NOT IN (SELECT WorldId FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldID AND PLAYER.Account = ACCOUNT.Email AND Username = ?);");
+	$stmt = $mysqli->prepare("SELECT WorldName, MaxPlots, MaxPlayerCapacity, InitialPlotPrices, PvP FROM WORLD WHERE WorldName NOT IN (SELECT WorldName FROM WORLD, PLAYER, ACCOUNT WHERE PLAYER.World = WORLD.WorldName AND PLAYER.Account = ACCOUNT.Email AND Username = ?);");
 
 	$stmt->bind_param("s", $username);
 	$stmt->execute();
@@ -54,7 +54,7 @@
 <?php
         // print headers
 		if($head = $activeWorlds->fetch_fields())
-			for($i = 1; $i < $activeWorlds->field_count; $i++)
+			for($i = 0; $i < $activeWorlds->field_count; $i++)
 			{
 				$temp = $head[$i];
 				echo "<TH>";
@@ -71,11 +71,11 @@
 					<td>
 						<form method=\"POST\" action=\"playerHome.php?username=" . $_GET["username"] . "&world=" . $row[0] . "\">
 							<input type=\"hidden\" id=\"joinWorldButton\" name=\"username\" value=\"" . $_GET["username"] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"world\" value=\"" . $row[0] . "\">
+							<input type=\"hidden\" id=\"joinWorldButton\" name=\"worldName\" value=\"" . $row[0] . "\">
 							<input type=\"submit\" id=\"joinWorldButton\" value=\"Join\">
 						</form>
 					</td>";
-			for($i = 1; $i < $activeWorlds->field_count; $i++)
+			for($i = 0; $i < $activeWorlds->field_count; $i++)
 			{
 
 				echo "<td> $row[$i] </td>";
@@ -99,7 +99,7 @@
 <?php
         // print headers
         if($head = $unregisteredWorlds->fetch_fields())
-			for($i = 1; $i < $unregisteredWorlds->field_count; $i++)
+			for($i = 0; $i < $unregisteredWorlds->field_count; $i++)
 			{
 				$temp = $head[$i];
 				echo "<TH>";
@@ -116,12 +116,11 @@
 					<td>
 						<form method=\"POST\" action=\"newWorldLogin.php\">
 							<input type=\"hidden\" id=\"joinWorldButton\" name=\"username\" value=\"" . $_GET["username"] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"world\" value=\"" . $row[0] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"worldName\" value=\"" . $row[1] . "\">
+							<input type=\"hidden\" id=\"joinWorldButton\" name=\"worldName\" value=\"" . $row[0] . "\">
 							<input type=\"submit\" id=\"joinWorldButton\" value=\"Add\">
 						</form>
 					</td>";
-			for($i = 1; $i < $unregisteredWorlds->field_count; $i++)
+			for($i = 0; $i < $unregisteredWorlds->field_count; $i++)
 			{
 
 				echo "<td> $row[$i] </td>";

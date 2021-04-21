@@ -17,13 +17,13 @@
         	printf("Connect failed: %s\n", $mysqli->connect_error);
 			exit();
 		}
-	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds, Guild, GuildPosition, PlayerID FROM PLAYER, ACCOUNT WHERE PLAYER.Account = ACCOUNT.Email AND World= ? AND Username = ?;");
+	$stmt = $mysqli->prepare("SELECT PlayerName, Experience, Coins, Attack, Defence, Health, Level, TitleRank, Wood, Fish, Food, Diamonds, Guild, GuildPosition FROM PLAYER, ACCOUNT WHERE PLAYER.Account = ACCOUNT.Email AND World= ? AND Username = ?;");
 
-	$stmt->bind_param("ss", $worldID, $accountUsername);
+	$stmt->bind_param("ss", $worldName, $accountUsername);
 
 
-	$worldID = $_GET['world'];
-    	$accountUsername = $_GET['username'];
+	$worldName = $_GET['world'];
+    $accountUsername = $_GET['username'];
 
 	// run query to select player stats
 	$stmt->execute();
@@ -44,9 +44,8 @@
 	$fish = NULL;
 	$food = NULL;
 	$diamond = NULL;
-	$guild = NULL;
+	$guildName = NULL;
 	$guildPos = NULL;
-	$playerID = NULL;
 
 	// getting player stats from above query
 	if($result && $row = $result->fetch_row())
@@ -63,30 +62,11 @@
 		$fish = $row[9];
 		$food = $row[10];
 		$diamond = $row[11];
-		$guild = $row[12];
+		$guildName = $row[12];
 		$guildPos = $row[13];
-		$playerID = $row[14];
 	}
 
 	$result->close();
-
-	// run query to get world name
-	$stmt = $mysqli->prepare("SELECT worldName FROM WORLD WHERE WorldID = ?;");
-	$stmt->bind_param("s", $worldID);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	
-	$worldName = NULL;
-	
-	// getting world name
-	if($result && $row = $result->fetch_row())
-	{
-		$worldName = $row[0];
-	}
-
-	$result->close();
-	$stmt->close();
-
 ?>
 
 <h2>
@@ -126,12 +106,12 @@
 
 <h2>
 	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="removeQuestButton" name="player" value="<?php echo "$playerID"?>">
+		<input type="hidden" id="removeQuestButton" name="player" value="<?php echo "$playerName"?>">
 		<input type="submit" id = "removeQuestButton" value = "Remove Quest">
 	</form>
 	Active Quests: <?php echo "$playerName"?>
 	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="addQuestButton" name="player" value="<?php echo "$playerID"?>">
+		<input type="hidden" id="addQuestButton" name="player" value="<?php echo "$playerName"?>">
 		<input type="submit" id = "addQuestButton" value = "Add Quest">
 	</form>
 </h2>
@@ -181,14 +161,14 @@
 <br>
 <h2>
 	<form style="margin: 0px; float: left; padding-left: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="removePlotButton" name="player" value="<?php echo "$playerID"?>">
-		<input type="hidden" id="removePlotButton" name="world" value="<?php echo "$worldID"?>">
+		<input type="hidden" id="removePlotButton" name="player" value="<?php echo "$playerName"?>">
+		<input type="hidden" id="removePlotButton" name="world" value="<?php echo "$worldName"?>">
 		<input type="submit" id = "removePlotButton" value = "Remove Plot">
 	</form>
 	Plots: <?php echo "$playerName"?>
 	<form style="margin: 0px; float: right; padding-right: 20px;" method="POST" action="index.php">
-		<input type="hidden" id="addPlotButton" name="player" value="<?php echo "$playerID"?>">
-		<input type="hidden" id="addPlotButton" name="world" value="<?php echo "$worldID"?>">
+		<input type="hidden" id="addPlotButton" name="player" value="<?php echo "$playerName"?>">
+		<input type="hidden" id="addPlotButton" name="world" value="<?php echo "$worldName"?>">
 		<input type="submit" id = "addPlotButton" value = "Add Plot">
 	</form>
 </h2>
@@ -197,7 +177,7 @@
 	// run query to select all plots
 	$stmt = $mysqli->prepare("SELECT DailyUpkeep, DailyWood, DailyFish, DailyFood, DailyDiamond, WoodInventory, FishInventory, FoodInventory, DiamondInventory, PermissionType FROM PLOT WHERE Owner = ?;");
 
-	$stmt->bind_param("s", $playerID);
+	$stmt->bind_param("s", $playerName);
 	$stmt->execute();
 	$result = $stmt->get_result();
 	$stmt->close();
@@ -236,39 +216,37 @@
 </table>
 <br>
 <?php
-	$stmt = $mysqli->prepare("SELECT GuildName, MaxNumMembers, GuildExperience, GuildLevel FROM GUILD WHERE GuildID = ?;");
+	$stmt = $mysqli->prepare("SELECT MaxNumMembers, GuildExperience, GuildLevel FROM GUILD WHERE GuildName = ?;");
 
-	$stmt->bind_param("s", $guild);
+	$stmt->bind_param("s", $guildName);
 	$stmt->execute();
 	$result = $stmt->get_result();
 
 	// variable declarations
-	$guildName = NULL;
-        $maxNumMembers = NULL;
-        $guildExperience = NULL;
-        $guildLevel = NULL;
-        $guildCount = NULL;
+    $maxNumMembers = NULL;
+    $guildExperience = NULL;
+    $guildLevel = NULL;
+    $guildCount = NULL;
 	
 	// getting guild stats if any
         if($result && $row = $result->fetch_row())
         {
-                $guildName = $row[0];
-                $maxNumMembers = $row[1];
-                $guildExperience = $row[2];
-                $guildLevel = $row[3];
-                $result->close();
+            $maxNumMembers = $row[0];
+            $guildExperience = $row[1];
+            $guildLevel = $row[2];
+            $result->close();
 
-		$stmt = $mysqli->prepare("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildID = ? AND PLAYER.Guild = ?;");
-		$stmt->bind_param("ss", $guild, $guild);
-		$stmt->execute();
-		$result = $stmt->get_result();
+			$stmt = $mysqli->prepare("SELECT COUNT(*) FROM GUILD, PLAYER WHERE GuildName = PLAYER.Guild AND GuildName = ?;");
+			$stmt->bind_param("s", $guildName);
+			$stmt->execute();
+			$result = $stmt->get_result();
 
 
-                if($result && $row = $result->fetch_row())
-                {
-                        $guildCount = $row[0];
-                }
-	}
+        	if($result && $row = $result->fetch_row())
+        	{
+            	$guildCount = $row[0];
+        	}
+		}
 
 	$result->close();
 	$stmt->close();
@@ -282,19 +260,19 @@
 <div class="mainPlayerBody">
 	<ul class="playerList">	
 <?php 
-	if($guild != NULL)
+	if($guildName != NULL)
 		echo "
 			<li id=\"guildOptions\">
 				<h3>Guild Options</h3>
 				<form method=\"POST\" action=\"index.php\">
 					<label for=\"view\">View Guild Members:</label>
-					<input type=\"hidden\" id=\"viewGuildButton\" name=\"guild\" value=\"" . $guild . "\">
+					<input type=\"hidden\" id=\"viewGuildButton\" name=\"guild\" value=\"" . $guildName . "\">
 					<input type=\"submit\" id = \"viewGuildButton\" value = \"View\">
 				</form>
 				<form method=\"POST\" action=\"index.php\">
 					<label for=\"leave\">Leave Guild:</label>
 					<input type=\"hidden\" id=\"leaveGuildButton\" name=\"player\" value=\"" . $playerName . "\">
-					<input type=\"hidden\" id=\"leaveGuildButton\" name=\"guild\" value=\"" . $guild . "\">
+					<input type=\"hidden\" id=\"leaveGuildButton\" name=\"guild\" value=\"" . $guildName . "\">
 					<input type=\"submit\" id = \"leaveGuildButton\" value = \"Leave\">
 				</form>
 				<p style=\"background-color: #009879;\">&nbsp;</p>
@@ -314,7 +292,7 @@
 				<h3>Guild Options</h3>
 				<form method=\"POST\" action=\"index.php\">
 					<label for=\"view\">Join a Guild:</label>
-					<input type=\"hidden\" id=\"joinGuildButton\" name=\"guild\" value=\"" . $playerID . "\">
+					<input type=\"hidden\" id=\"joinGuildButton\" name=\"guild\" value=\"" . $playerName . "\">
 					<input type=\"submit\" id = \"joinGuildButton\" value = \"Join\">
 				</form>
 				<p style=\"background-color: #009879;\">&nbsp;</p>

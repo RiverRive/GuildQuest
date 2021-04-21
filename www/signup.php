@@ -29,7 +29,7 @@
 
 	if($result == TRUE)
 	{
-		header("Location: playerHome.php");
+		header("Location: index.php");
 	}
 	else
 	{

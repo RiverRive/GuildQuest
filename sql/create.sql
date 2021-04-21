@@ -18,20 +18,18 @@ CREATE TABLE ACCOUNT
 
 CREATE TABLE WORLD
 (
-	WorldID	 				CHAR(15) NOT NULL,
-	WorldName				CHAR(64) NOT NULL DEFAULT 'New World',
+	WorldName				CHAR(64) NOT NULL UNIQUE,
 	MaxPlots				INTEGER NOT NULL DEFAULT 100,
 	MaxPlayerCapacity		INTEGER NOT NULL DEFAULT 25,
 	InitialPlotPrices		INTEGER NOT NULL DEFAULT 100,
     PvP						BOOL NOT NULL DEFAULT FALSE,
-    INDEX world_id(WorldID),
-    PRIMARY KEY (WorldID)
+    INDEX world_name (WorldName),
+    PRIMARY KEY (WorldName)
 );
 
 CREATE TABLE QUEST
 (
-	QuestID 				CHAR(15) NOT NULL,
-	QuestName				CHAR(30) NOT NULL,
+	QuestName				CHAR(30) NOT NULL UNIQUE,
 	QuestDescription		TEXT NOT NULL,
 	CoinsGain				INTEGER NOT NULL DEFAULT 0,
 	ExperienceGain			INTEGER NOT NULL DEFAULT 0,
@@ -40,25 +38,23 @@ CREATE TABLE QUEST
 	HealthGain				INTEGER NOT NULL DEFAULT 0,
 	TimeLimit				TIME DEFAULT "01:00:00.0000000",
 	MinLevel				INTEGER DEFAULT 1,
-    INDEX quest_id (QuestID),
-    PRIMARY KEY (QuestID)
+    INDEX quest_name (QuestName),
+    PRIMARY KEY (QuestName)
 );
 
 CREATE TABLE GUILD
 (
-	GuildID 				CHAR(15) NOT NULL,
 	GuildName				CHAR(30) NOT NULL UNIQUE,
 	MaxNumMembers			INTEGER DEFAULT 10,
     GuildExperience			INTEGER NOT NULL DEFAULT 0,
 	GuildLevel				INTEGER NOT NULL DEFAULT 0,
-    INDEX guild_id (GuildID),
-    PRIMARY KEY (GuildID)
+    INDEX guild_name (GuildName),
+    PRIMARY KEY (GuildName)
 );
 
 CREATE TABLE PLAYER
 (
-	PlayerID 				CHAR(15) NOT NULL,
-	PlayerName				CHAR(15) NOT NULL,
+	PlayerName				CHAR(15) NOT NULL UNIQUE,
 	Account					CHAR(64),
 	FOREIGN KEY (Account) REFERENCES ACCOUNT(Email) ON DELETE SET NULL,
 	DateLastLogged			DATE NOT NULL,
@@ -69,38 +65,38 @@ CREATE TABLE PLAYER
 	Health					INTEGER DEFAULT 0,
 	Level					INTEGER DEFAULT 0,
 	TitleRank				CHAR(10) CHECK(TitleRank IN('Player','Donor', 'SuperDonor')) DEFAULT 'Player',
-	Guild					CHAR(15),
-    FOREIGN KEY (Guild) REFERENCES GUILD(GuildID) ON DELETE SET NULL,
+	Guild					CHAR(30),
+    FOREIGN KEY (Guild) REFERENCES GUILD(GuildName) ON DELETE SET NULL,
 	GuildPosition			CHAR(6) CHECK(GuildPosition IN('Leader', 'Elder', 'Member', NULL)),
-	World					CHAR(15) NOT NULL,
-    FOREIGN KEY (World) REFERENCES WORLD(WorldID) ON DELETE CASCADE,
+	World					CHAR(64) NOT NULL,
+    FOREIGN KEY (World) REFERENCES WORLD(WorldName) ON DELETE CASCADE,
 	Wood					INTEGER DEFAULT 0,
 	Fish					INTEGER DEFAULT 0,
 	Food					INTEGER DEFAULT 0,
 	Diamonds				INTEGER DEFAULT 0,
-    INDEX player_ID (PlayerID),
-    PRIMARY KEY (PlayerID)
+    INDEX player_name (PlayerName),
+    PRIMARY KEY (PlayerName)
 );
 
 /*Creating mission table to define the many to many relationship between players and quests*/
 CREATE TABLE MISSION
 (
-	PlayerID 				CHAR(15) NOT NULL,
-    QuestID 				CHAR(15) NOT NULL,
+	PlayerName 				CHAR(15) NOT NULL,
+    QuestName 				CHAR(30) NOT NULL,
     DateStart				DATE NOT NULL,
-    FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID) ON DELETE CASCADE,
-    FOREIGN KEY (QuestID) REFERENCES QUEST(QuestID) ON DELETE CASCADE,
-    INDEX player_id (PlayerID),
-    KEY (PlayerID, QuestID)
+    FOREIGN KEY (PlayerName) REFERENCES PLAYER(PlayerName) ON DELETE CASCADE,
+    FOREIGN KEY (QuestName) REFERENCES QUEST(QuestName) ON DELETE CASCADE,
+    INDEX player_name (PlayerName),
+    PRIMARY KEY (PlayerName, QuestName)
 );
 
 CREATE TABLE PLOT
 (
 	PlotID 					CHAR(15) NOT NULL,
-	World					CHAR(15) NOT NULL,
-    FOREIGN KEY (World) REFERENCES WORLD(WorldID) ON DELETE CASCADE,
+	World					CHAR(64) NOT NULL,
+    FOREIGN KEY (World) REFERENCES WORLD(WorldName) ON DELETE CASCADE,
 	Owner					CHAR(15) NOT NULL,
-    FOREIGN KEY (Owner) REFERENCES PLAYER(PlayerID) ON DELETE CASCADE,
+    FOREIGN KEY (Owner) REFERENCES PLAYER(PlayerName) ON DELETE CASCADE,
 	DailyUpkeep				INTEGER NOT NULL DEFAULT 0,
     DailyWood				INTEGER NOT NULL DEFAULT 1,
     DailyFish				INTEGER NOT NULL DEFAULT 1,

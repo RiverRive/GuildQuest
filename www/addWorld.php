@@ -31,19 +31,18 @@
     }
 
     // prepared statement for inserting into player table
-    $stmt = $mysqli->prepare("INSERT INTO PLAYER (PlayerID, PlayerName, Account, DateLastLogged, World) VALUES(?, ?, ?, ?, ?);");
-    $stmt->bind_param("sssss", $playerID, $playerName, $account, $currentDate, $worldID);
+    $stmt = $mysqli->prepare("INSERT INTO PLAYER (PlayerName, Account, DateLastLogged, World) VALUES(?, ?, ?, ?);");
+    $stmt->bind_param("ssss", $playerName, $account, $currentDate, $worldName);
 
     $playerName = $_POST['playerName'];
-    $worldID = $_POST['world'];
-    $playerID = "P" . rand(0, 9999999999);;
+    $worldName = $_POST['worldName'];
     $currentDate = date("Y-m-d");
 
     $stmt->execute();
     $result = $stmt->get_result();
 
   
-    header("Location: playerHome.php?username=" . $accountUsername . "&world=" . $worldID);
+    header("Location: playerHome.php?username=" . $accountUsername . "&world=" . $worldName);
 
     $result->close();
     $stmt->close();
