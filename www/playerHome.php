@@ -313,9 +313,12 @@
 		echo "
 			<li>
 				<h3>Guild Options</h3>
-				<form method=\"POST\" action=\"index.php\">
+				<form method=\"POST\" action=\"joinGuild.php\">
 					<label for=\"view\">Join a Guild:</label>
-					<input type=\"hidden\" id=\"joinGuildButton\" name=\"guild\" value=\"" . $playerName . "\">
+					<input type=\"text\" id=\"guildName\" name=\"guildName\" placeholder=\"Enter guild name..\">
+					<input type=\"hidden\" id=\"username\" name=\"username\" value=\"" . $playerName . "\">
+					<input type=\"hidden\" id=\"worldID\" name=\"worldID\" value=\"" . $worldName . "\">
+					<input type=\"hidden\" id=\"accountName\" name=\"accountName\" value=\"" . $accountUsername . "\">
 					<input type=\"submit\" id = \"joinGuildButton\" value = \"Join\">
 				</form>
 				<p style=\"background-color: #009879;\">&nbsp;</p>
