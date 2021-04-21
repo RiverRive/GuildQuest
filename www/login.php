@@ -39,6 +39,12 @@
 	{
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
+		if ($row['IsBanned'] == TRUE)
+		{
+			echo "You are banned!";
+			exit();
+		}
+
 		// go to admin page if admin
 		if ($row['Role'] == 'Admin')
 		{
