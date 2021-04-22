@@ -49,7 +49,7 @@ p{
 }
 
 #addQuestButton {
-	background-color:red;
+	background-color:brown;
 	padding: 5px;
 }
 
@@ -57,19 +57,61 @@ p{
 	background-color: #0987FF;
 }
 
-#completeQuestButton {
-	background-color: #009879;
-	color: white;
-	text-decoration:none;
-	padding: 1px;
-	border-radius: 5px;
+#addPlotButton {
+	background-color: brown;
+    padding: 5px;
 }
 
-#joinGuildButton {
+#addPlotButton:hover {
+	background-color:#0987FF;
+}
+
+#addQuestHomeButton{
+    background-color: #009879;
+}
+
+#addQuestHomeButton:hover {
+    background-color: #0987FF;
+}
+
+#completeQuestButton {
+	background-color: brown;
+    padding: 5px;
+}
+
+#completeQuestButton:hover {
 	background-color: #0987FF;
 }
 
-#joinGuildButton:hover {
-	background-color:red;
+#joinGuildButton {
+	background-color: brown;
+    padding: 10px;
 }
+
+#joinGuildButton:hover {
+	background-color:#0987FF;
+}
+
+#leaveGuildButton {
+	background-color: brown;
+    padding: 8px;
+}
+
+#leaveGuildButton:hover {
+	background-color:#0987FF;
+}
+
+#returnButtonPlayer {
+	color: white;
+	background-color: #009879;
+	padding: 3px;
+	text-decoration:none;
+	border-radius: 5px;
+}
+
+#returnButtonPlayer:hover {
+	background-color:#0098FF;
+}
+
+
 
