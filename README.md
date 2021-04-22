@@ -22,3 +22,6 @@ password: a12345
 Player Login:
 username: LimeBat
 password: L12345
+
+
+When populating the local instance of the GuildQuest database, please run both populate scripts located in the sql directory to ensure that all the accounts have been added.
