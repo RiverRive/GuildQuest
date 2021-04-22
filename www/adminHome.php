@@ -166,6 +166,101 @@
 	</form>
 	</div>
 
+	 <br>
+        <br>
+        <h2>Create Quest</h2>
+
+        <form method="POST" action="createQuest.php" class="adminForm">
+                <div class="row">
+                  <div class="col-left">
+                    <label for="questName">Quest Name:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="questName" name="questName" placeholder="Enter quest name.."><br>
+                  </div>
+		</div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="questDescription">Quest Description:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="questDescription" name="questDescription" placeholder="Enter description.."><br>
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="coinsGain">Coins Gained:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="coinsGain" name="coinsGain" placeholder="Enter coins gained.."><br>
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="xpGain">XP Gained:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="xpGain" name="xpGain" placeholder="Enter XP gained.."><br>
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="attackGain">Attack Gained:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="attackGain" name="attackGain" placeholder="Enter attack gained.."><br>
+                  </div>
+                </div>
+	
+		<div class="row">
+                  <div class="col-left">
+                    <label for="defGain">Defence Gained:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="defGain" name="defGain" placeholder="Enter defence gained.."><br>
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="healthGain">Health Gained:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="healthGain" name="healthGain" placeholder="Enter health gained.."><br>
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="timeLimit">Time Limit:</label>
+                  </div>
+                  <div class="col-right-time">
+		    <input type="text" id="hr" name="hr" placeholder="Hour..">
+		    <input type="text" id="min" name="min" placeholder="Min..">
+		    <input type="text" id="sec" name="sec" placeholder="Sec..">
+                  </div>
+                </div>
+
+		<div class="row">
+                  <div class="col-left">
+                    <label for="minLevel">Minimum Level:</label>
+                  </div>
+                  <div class="col-right">
+                    <input type="text" id="minLevel" name="minLevel" placeholder="Enter minimum level.."><br>
+                  </div>
+                </div>
+
+
+
+
+		<br>
+                <input type="submit" id="createQuest" value="Create Quest">
+
+	</form>
 
 	<br>
 	<br>

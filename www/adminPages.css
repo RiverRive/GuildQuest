@@ -81,3 +81,12 @@ input[type=text]:focus {
 	background-color:#0098FF;
 }
 
+
+.col-right-time {
+	float: right;
+}
+
+.col-right-time  input[type=text]{
+	max-width: 76px;
+}
+
