@@ -54,7 +54,7 @@
 		exit();
 	}
 
-	$stmt = $mysqli->prepare("UPDATE PLAYER SET Guild = ? WHERE PlayerName = ?;");
+	$stmt = $mysqli->prepare("UPDATE PLAYER SET Guild = ?, GuildPosition = 'Member' WHERE PlayerName = ?;");
 	$stmt->bind_param("ss", $guildName, $username);
 
 	$username = $_POST['username'];
@@ -63,7 +63,8 @@
 
 	$stmt->close();
 
-	$worldName = $_POST['worldID'];
+	$worldName = $_POST['world'];
+	printf($worldName);
 	$accountUser = $_POST['accountName'];
 	
 	header("Location: playerHome.php?username=" . $accountUser . "&world=" . $worldName );

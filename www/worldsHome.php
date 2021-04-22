@@ -3,11 +3,11 @@
 <title>Worlds</title>
 <link rel="stylesheet" href="tables.css">
 <link rel="stylesheet" href="adminPages.css">
+<link rel="stylesheet" href="playerHome.css">
 </head>
 
 <body class="displayPage">
 <h2>Worlds</h2>
-
 <?php
 	
 	require "guildQuestConfig.php";
@@ -46,10 +46,9 @@
 	$stmt->close();
 
 ?>
-
+<br>
 <table class="displayTable">
-
-<tr>
+<TR>
 <TH></TH>
 <?php
         // print headers
@@ -70,8 +69,8 @@
 			echo "<tr>
 					<td>
 						<form method=\"POST\" action=\"playerHome.php?username=" . $_GET["username"] . "&world=" . $row[0] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"username\" value=\"" . $_GET["username"] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"worldName\" value=\"" . $row[0] . "\">
+							<input type=\"hidden\" id=\"username\" name=\"username\" value=\"" . $_GET["username"] . "\">
+							<input type=\"hidden\" id=\"worldName\" name=\"worldName\" value=\"" . $row[0] . "\">
 							<input type=\"submit\" id=\"joinWorldButton\" value=\"Join\">
 						</form>
 					</td>";
@@ -89,12 +88,14 @@
 ?>
 
 </table>
-
+<br>
+<br>
+<br>
 <h2>Unregistered Worlds</h2>
-
+<br>
 <table class="displayTable">
 
-<tr>
+<TR>
 <TH></TH>
 <?php
         // print headers
@@ -115,8 +116,8 @@
 			echo "<tr>
 					<td>
 						<form method=\"POST\" action=\"newWorldLogin.php\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"username\" value=\"" . $_GET["username"] . "\">
-							<input type=\"hidden\" id=\"joinWorldButton\" name=\"worldName\" value=\"" . $row[0] . "\">
+							<input type=\"hidden\" id=\"username\" name=\"username\" value=\"" . $_GET["username"] . "\">
+							<input type=\"hidden\" id=\"worldName\" name=\"worldName\" value=\"" . $row[0] . "\">
 							<input type=\"submit\" id=\"joinWorldButton\" value=\"Add\">
 						</form>
 					</td>";

@@ -38,13 +38,16 @@
     $worldName = $_POST['worldName'];
     $currentDate = date("Y-m-d");
 
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-  
-    header("Location: playerHome.php?username=" . $accountUsername . "&world=" . $worldName);
-
-    $result->close();
+    if($stmt->execute())
+    {   
+        header("Location: playerHome.php?username=" . $accountUsername . "&world=" . $worldName);
+        
+    }
+    else
+    {
+        echo "This name is already taken or your name was too long (15 chars)!";
+    }
+    
     $stmt->close();
     $mysqli->close();
 ?>
